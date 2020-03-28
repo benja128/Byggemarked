@@ -137,7 +137,13 @@
     <Compile Include="Migrations\202003240808340_inital.designer.cs">
       <DependentUpon>202003240808340_inital.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003281729210_Rent.cs" />
+    <Compile Include="Migrations\202003281729210_Rent.designer.cs">
+      <DependentUpon>202003281729210_Rent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Rent.cs" />
     <Compile Include="Models\Tool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\HomeDepotContext.cs" />
@@ -261,6 +267,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Views\Home\IndexStyle.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -285,10 +292,16 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Home\Book.cshtml" />
+    <Content Include="Views\Home\BookConfirm.cshtml" />
+    <Content Include="Views\Home\Overview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003240808340_inital.resx">
       <DependentUpon>202003240808340_inital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003281729210_Rent.resx">
+      <DependentUpon>202003281729210_Rent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

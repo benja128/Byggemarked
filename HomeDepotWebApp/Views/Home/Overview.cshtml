@@ -1,0 +1,31 @@
+﻿@model IEnumerable<HomeDepotWebApp.Models.Tool>
+
+@{
+    ViewBag.Title = "Overview";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="IndexStyle.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="d-flex flex-wrap justify-content-center">
+        @foreach (var tool in Model) {
+            <div class="card p-2" style="width:25%; margin:5px">
+                <img src="https://imgaz.staticbg.com/thumb/large/oaupload/banggood/images/DF/E5/66ef5333-a743-4d92-94f4-d7ec62831fc0.JPG" alt="Tool" style="width:100%">
+                <div class="container">
+                    <h4><b>@Html.DisplayFor(modelTool => tool.Name)</b></h4>
+                    <p>@Html.DisplayFor(modelTool => tool.Description)</p>
+                    <p>Depositum: @Html.DisplayFor(modelTool => tool.Depos) kr</p>
+                    <p>Pris pr. dag: @Html.DisplayFor(modelToole => tool.DayPrice) kr.</p>
+                    @Html.HiddenFor(modelTool => tool.Id)
+                    <p class="btn" style="color:#000000; margin-left:35%; margin-right:auto">@Html.ActionLink("Book", "Login", new { id = tool.Id })</p>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
