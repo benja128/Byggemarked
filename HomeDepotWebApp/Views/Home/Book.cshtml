@@ -43,16 +43,16 @@
             <br />
             <div>
                 @using (Html.BeginForm("BookConfirm", "Home", FormMethod.Post)) {
-                    @Html.DisplayNameFor(model => model.Days);
+                    @Html.DisplayNameFor(model => model.Days)
                     @Html.EditorFor(model => model.Days, new { htmlAttributes = new { @class = "form-control" } })
 
 
-                    @Html.DisplayNameFor(model => model.PickUp);
+                    @Html.DisplayNameFor(model => model.PickUp)
                     @Html.EditorFor(model => model.PickUp, new { htmlAttributes = new { @class = "form-control" } })
 
 
                     <input type="submit" value="Bekræft booking" class="btn btn-success btn-lg" style="margin-top:2%">
-                }
+                 }
             </div>
 
         </div>
