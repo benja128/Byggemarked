@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListBox ItemsSource="{Binding}" DisplayMemberPath="Name"></ListBox>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0" NavigationUIVisibility="Hidden" x:Name="Main"></Frame>
     </Grid>
 </Window>

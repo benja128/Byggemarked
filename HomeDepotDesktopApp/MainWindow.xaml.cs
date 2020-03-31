@@ -27,6 +27,9 @@ namespace HomeDepotDesktopApp
             InitializeComponent();
             _context = new HomeDepotContext();
             this.DataContext = _context.Tools.ToList();
+
+            Main.Content = new HomePage();
+
         }
     }
 }

@@ -11,38 +11,38 @@ namespace HomeDepotWebApp.Controllers
     public class HomeController : Controller
     {
         private HomeDepotContext db = new HomeDepotContext();
+        private static Rent rent;
 
         public ActionResult Index()
         {
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Index(Customer req) {
+       [HttpPost]
+       public ActionResult UserAuth(Customer req) {
             var customer = db.Customers.Where(c => c.Username.Equals(req.Username) && c.Password.Equals(req.Password)).FirstOrDefault();
-            if(customer == null) {
-                return RedirectToAction("Index");
+            if (customer != null) {
+                rent = new Rent();
+                rent.Customer = customer;
+                return RedirectToAction("Overview");
             } else {
-                return View("Overview", customer);
+                return RedirectToAction("Index");
             }
-
         }
 
-        public ActionResult Overview(Customer customer) {
+        public ActionResult Overview() {
             List<Tool> tools = db.Tools.ToList();
             return View(tools);
         }
 
-
-        public ActionResult Book(Customer customer, int id) {
-            Rent rent = new Rent();
-            rent.Customer = customer;
-            rent.RentTool = db.Tools.Find(id);
-            return View("BookConfirm", rent);
+        public ActionResult Book(int id) {
+            Tool tool = db.Tools.Find(id);
+            rent.RentTool = tool;
+            return View("Book", rent);
         }
 
         [HttpPost]
-        public ActionResult BookConfirm(Rent rent) {
+        public ActionResult BookConfirm() {
             db.Rents.Add(rent);
             db.SaveChanges();
             return View(rent);
