@@ -1,4 +1,5 @@
-﻿using HomeDepotWebApp.Storage;
+﻿using HomeDepotWebApp.Models;
+using HomeDepotWebApp.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,8 @@ namespace HomeDepotDesktopApp
         {
             InitializeComponent();
             _context = new HomeDepotContext();
-            this.DataContext = _context.Tools.ToList();
+            List<Customer> customers = _context.Customers.ToList<Customer>();
+            this.DataContext = customers;
 
             Main.Content = new HomePage();
 

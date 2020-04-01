@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity.Migrations;
+
 
 namespace HomeDepotWebApp.Controllers
 {
@@ -20,13 +22,10 @@ namespace HomeDepotWebApp.Controllers
 
        [HttpPost]
        public ActionResult UserAuth(Customer req) {
-            var customer = db.Customers.Where(c => c.Username.Equals(req.Username) && c.Password.Equals(req.Password)).FirstOrDefault();
+            var customer = db.Customers.Where(c => c.Username.Equals(req.Username) && c.Password.Equals(req.Password)).First();
             if (customer != null) {
-                rent = new Rent {
-                    Customer = customer
-                };
-                db.Rents.Add(rent);
-                db.SaveChanges();
+                rent = new Rent();
+                rent.Customer = customer;
                 return RedirectToAction("Overview");
             } else {
                 return RedirectToAction("Index");
@@ -41,13 +40,15 @@ namespace HomeDepotWebApp.Controllers
         public ActionResult Book(int id) {
             Tool tool = db.Tools.Find(id);
             rent.RentTool = tool;
-            db.SaveChanges();
             return View("Book", rent);
         }
 
         [HttpPost]
-        public ActionResult BookConfirm() {
-            //db.Rents.Add(rent);
+        public ActionResult BookConfirm(int Days, string PickUp) {
+            rent.Days = Days;
+            rent.PickUp = PickUp;
+            rent.Status = Status.Reserveret;
+            db.Rents.Add(rent);
             db.SaveChanges();
             return View(rent);
         }

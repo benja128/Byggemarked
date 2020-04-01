@@ -44,7 +44,21 @@
         <Label Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100">ID</Label>
         <TextBox IsReadOnly = "True" Grid.Row="5" Grid.Column="1" x:Name="brugerid"></TextBox>
         <Label Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">Bookinger</Label>
-        <ListBox Grid.Row="7" Grid.ColumnSpan="2">
+            <ListBox x:Name="ListBoxRents" Grid.Row="7" Grid.ColumnSpan="3" ItemsSource="{Binding}" SelectionChanged="ListBox_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{} PickUp: {0} - Days: {1} - Status: {2}">
+                                    <Binding Path="PickUp"/>
+                                    <Binding Path="Days"/>
+                                    <Binding Path="Status"/>
+
+                            </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             <!--Her skal items være samt radiobuttons-->
         </ListBox>
         <Button Grid.Row="8" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Grid.ColumnSpan="2" Click="Button_Click">Opdater</Button>
