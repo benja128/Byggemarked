@@ -26,12 +26,13 @@ namespace HomeDepotDesktopApp {
         public CustomerOverview(Customer customer) {
             _context = new HomeDepotContext();
             InitializeComponent();
+
             navn.Text = customer.Name;
             email.Text = customer.Email;
             brugerid.Text = customer.CustomerId.ToString();
             brugernavn.Text = customer.Username;
             password.Text = customer.Password;
-            List<Rent> rents =_context.Rents.Where(r => r.Customer.CustomerId.Equals(customer.CustomerId)).ToList();
+            List<Rent> rents = _context.Rents.Where(r => r.Customer.CustomerId.Equals(customer.CustomerId)).ToList();
             this.DataContext = rents;
         }
 
@@ -58,7 +59,7 @@ namespace HomeDepotDesktopApp {
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            Rent rent = (Rent)ListBoxRents.SelectedItem;
+            Rent rent = (Rent)rents.SelectedItem;
             this.NavigationService.Content = new RentOverview(rent);
         }
     }

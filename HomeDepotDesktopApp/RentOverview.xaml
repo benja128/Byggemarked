@@ -32,13 +32,15 @@
         </Menu>
 
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100">Booking id</Label>
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="id"></TextBox>
+        <TextBox IsReadOnly = "True" Grid.Row="1" Grid.Column="1" x:Name="id"></TextBox>
         <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100">Værktøj</Label>
-        <TextBox Grid.Row="2" Grid.Column="1" x:Name="tool"></TextBox>
+        <TextBox IsReadOnly = "True" Grid.Row="2" Grid.Column="1" x:Name="tool"></TextBox>
         <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100">Afhentnings tidspunkt</Label>
-        <TextBox Grid.Row="3" Grid.Column="1" x:Name="pickup"></TextBox>
+        <TextBox IsReadOnly = "True" Grid.Row="3" Grid.Column="1" x:Name="pickup"></TextBox>
         <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100">Antal dage</Label>
-        <TextBox Grid.Row="4" Grid.Column="1" x:Name="days"></TextBox>
+        <TextBox IsReadOnly = "True" Grid.Row="4" Grid.Column="1" x:Name="days"></TextBox>
+        <ComboBox x:Name="combo" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="150"/>
+        <Button Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Click="Button_Click" >Opdater</Button>
 
     </Grid>
 </Page>

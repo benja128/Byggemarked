@@ -22,10 +22,11 @@ namespace HomeDepotWebApp.Controllers
 
        [HttpPost]
        public ActionResult UserAuth(Customer req) {
-            var customer = db.Customers.Where(c => c.Username.Equals(req.Username) && c.Password.Equals(req.Password)).First();
+            var customer = db.Customers.Where(c => c.Username.Equals(req.Username) && c.Password.Equals(req.Password)).FirstOrDefault();
             if (customer != null) {
-                rent = new Rent();
-                rent.Customer = customer;
+                rent = new Rent {
+                    Customer = customer
+                };
                 return RedirectToAction("Overview");
             } else {
                 return RedirectToAction("Index");
@@ -48,10 +49,12 @@ namespace HomeDepotWebApp.Controllers
             rent.Days = Days;
             rent.PickUp = PickUp;
             rent.Status = Status.Reserveret;
+            db.Customers.Attach(rent.Customer);
+            db.Tools.Attach(rent.RentTool);
             db.Rents.Add(rent);
             db.SaveChanges();
             return View(rent);
-        }
+        }   
 
 
 

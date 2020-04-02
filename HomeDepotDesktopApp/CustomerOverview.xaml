@@ -44,16 +44,15 @@
         <Label Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100">ID</Label>
         <TextBox IsReadOnly = "True" Grid.Row="5" Grid.Column="1" x:Name="brugerid"></TextBox>
         <Label Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center">Bookinger</Label>
-            <ListBox x:Name="ListBoxRents" Grid.Row="7" Grid.ColumnSpan="3" ItemsSource="{Binding}" SelectionChanged="ListBox_SelectionChanged">
+            <ListBox x:Name="rents" Grid.Row="7" Grid.ColumnSpan="3" ItemsSource="{Binding}" SelectionChanged="ListBox_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
                             <TextBlock.Text>
-                                <MultiBinding StringFormat="{} PickUp: {0} - Days: {1} - Status: {2}">
+                            <MultiBinding StringFormat="{}Status: {0} - Tidspunkt: {1} - Dage: {2}">
+                                    <Binding Path="Status"/>
                                     <Binding Path="PickUp"/>
                                     <Binding Path="Days"/>
-                                    <Binding Path="Status"/>
-
                             </MultiBinding>
                             </TextBlock.Text>
                         </TextBlock>
